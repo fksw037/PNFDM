@@ -1,43 +1,55 @@
-# Patch-Wise Neighborhood Feature Distribution Modeling for Anomaly Detection in Locomotive Roof Inspections
+# PNFDM Conda Environment Setup
 
-This repository contains the description and dataset for the **Patch-Wise Neighborhood Feature Distribution Modeling (PNFDM)** algorithm for anomaly detection in locomotive roof inspections, as described in our paper:
+This document provides instructions for setting up the `pnfdm` Conda environment on a new machine using the exported environment configuration file.
 
-**[Patch-Wise Neighborhood Feature Distribution Modeling for Anomaly Detection in Locomotive Roof Inspections](https://github.com/zzfu-buaa/PNFDM)**
+## Prerequisites
 
-## Abstract
+Before setting up the environment, make sure you have the following installed:
 
-Electric locomotives rely heavily on their roof power supply systems, which are susceptible to foreign objects due to the complex outdoor environments. Detecting these objects accurately and in a timely manner is crucial for ensuring train safety. Traditional methods face challenges such as the diverse and unpredictable nature of foreign objects, difficulty in obtaining abnormal samples, and inconsistencies in image quality. To overcome these issues, we introduce the Patch-Wise Neighborhood Feature Distribution Modeling (PNFDM) algorithm. Experimental results demonstrate that our method significantly outperforms existing approaches on a locomotive roof anomaly dataset and generalizes effectively to the public MVTec AD dataset. The PNFDM algorithm allows for rapid model updates without needing abnormal samples, training on 100 samples in just 39.76 seconds.
+- [Anaconda](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
-## Dataset
+## Steps to Setup Environment
 
-Currently, only the locomotive roof anomaly detection dataset is publicly available. The dataset can be downloaded from the following link:
+### 1. Clone or Download the Repository
 
-- [Dataset Download (Baidu Netdisk)](https://pan.baidu.com/s/1bzwh56EQWkKeYPufUTu7kg)(Extraction code：pij3）
+Clone or download the project repository that includes the environment configuration file (`pnfdm_environment.yml`).
 
-After downloading, extract the dataset into the `data/` directory within this repository.
+```bash
+git clone <https://github.com/zzfu-buaa/PNFDM.git>
+cd <PNFDM>
+```
 
-## Current Status and Future Work
+### 2. Create the Conda Environment
+Run the following command to create a new Conda environment using the exported YAML configuration file:
+```bash
+conda env create -f pnfdm_environment.yml
+```
+This will create a new Conda environment named pnfdm with all the dependencies specified in the pnfdm_environment.yml file.
 
-The PNFDM code will be made available after the paper is accepted for publication. At this stage, we are providing the dataset and preliminary results to allow the community to explore the data and understand the challenges involved in locomotive roof anomaly detection.
+### 3. Activate the Environment
+After the environment has been created, activate it by running:
+```bash
+conda activate pnfdm
+```
+You should now be in the pnfdm environment, and you can start working with the project's dependencies.
 
-## Preliminary Results
+### 4. Verify the Environment
+To verify that the environment has been correctly set up, check the installed packages and versions:
+```bash
+conda list
+This will show you all the packages installed in the pnfdm environment and their versions.
+```
+### 5. Deactivate the Environment
+Once you are done working in the environment, you can deactivate it using the following command:
+```bash
+conda deactivate
+```
+This will return you to your base Conda environment or system Python.
 
-Our experiments show that the PNFDM algorithm achieves state-of-the-art performance on the locomotive roof anomaly dataset. Additionally, the method is also applicable to the MVTec AD dataset. Below are examples of the results for each dataset:
-1. Locomotive Roof Anomaly Dataset:
+Updating the Environment
 
-![Locomotive Roof Anomaly Detection Example](Results/Roof_AD.png "Anomaly Detection Example on Locomotive Roof")
-
-2. MVTec AD Dataset:
-
-![MVTec AD Anomaly Detection Example](Results/MVTec_AD.png "Anomaly Detection Example on MVTec AD Dataset")
-
-
-We will update this repository with the full codebase once the paper is officially published. Stay tuned for updates!
-
-## Citation
-
-If you find our dataset or preliminary results useful in your research, please cite our paper:
-
-## Contact
-
-For any questions or issues, please open an issue in this repository or contact us at [zzfu_mt@buaa.edu.cn].
+If you make changes to the environment (e.g., install new packages), you can update the pnfdm_environment.yml file by running:
+```bash
+conda env export --name pnfdm > pnfdm_environment.yml
+```
+This will regenerate the YAML file with the new dependencies, which can be shared and used to recreate the environment.
